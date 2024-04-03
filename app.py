@@ -22,7 +22,8 @@ db_credentials = os.getenv('DB_CREDENTIALS')
 
 # Construct the database URL if credentials are provided
 if db_credentials:
-    db_user, db_password, db_host, db_port, db_name = db_credentials.split(';')
+    db_user, db_password, db_host, db_port_str, db_name = db_credentials.split(';')
+    db_port = int(db_port_str) if db_port_str and db_port_str.isdigit() else None
     db_url = f'postgresql://{{{db_user}}}:{{{db_password}}}@{{{db_host}}}:{{{db_port}}}/{{{db_name}}}'
 
 
