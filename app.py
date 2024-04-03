@@ -1,9 +1,9 @@
-db_url = f'postgresql://{db_user}:{quote_plus(db_password)}@{db_host}:{db_port}/{db_name}'db_url = f'postgresql://{db_user}:{quote_plus(db_password)}@{db_host}:{db_port}/{db_name}'import os
 from flask import Flask, jsonify, request
 from sqlalchemy import create_engine, Column, Integer, String, ARRAY, inspect
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from urllib.parse import quote_plus
+import os
 
 
 app = Flask(__name__)
