@@ -3,6 +3,8 @@ from flask import Flask, jsonify, request
 from sqlalchemy import create_engine, Column, Integer, String, ARRAY, inspect
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from urllib.parse import quote_plus
+
 
 app = Flask(__name__)
 
@@ -24,7 +26,7 @@ db_credentials = os.getenv('DB_CREDENTIALS')
 if db_credentials:
     db_user, db_password, db_host, db_port_str, db_name = db_credentials.split(';')
     db_port = int(db_port_str) if db_port_str and db_port_str.isdigit() else None
-    db_url = f'postgresql://{{{db_user}}}:{{{db_password}}}@{{{db_host}}}:{db_port}/{{{db_name}}}'
+    db_url = f'postgresql://{{{db_user}}}:{quote_plus{{db_password}}}@{{{db_host}}}:{db_port}/{{{db_name}}}'
 
 
     # Create the SQLAlchemy engine and session outside the app context
