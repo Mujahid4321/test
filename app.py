@@ -13,7 +13,7 @@ nlp = spacy.load("en_core_web_sm")
 
 app = Flask(__name__)
 CORS(app)
-# Define your SQLAlchemy model for intents
+# 25Define your SQLAlchemy model for intents
 Base = declarative_base()
 
 class Intent(Base):
